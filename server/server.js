@@ -6,8 +6,11 @@ const mongoose = require("mongoose");
 const app = express();
 require("dotenv").config();
 
-mongoose.Promise = global.Promise; //
-mongoose.connect(process.env.DATABASE);
+mongoose.Promise = global.Promise; 
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+});
 
 
 // ================================================
@@ -18,13 +21,26 @@ app.use(bodyParser.json());
 app.use(cookieParse());
 
 
+
+//   Models 
+const  {User} = require("./models/user")
+
 // ================================================
 //      USER - Router
 // ================================================
 
-app.post("/api/users/register", (req, res)=> {
-    res.status(200);
-})
+app.post('/api/users/register', (req, res)=>{
+      const user = new User(req.body);
+
+      user.save((err, doc)=>{
+          if(err) return  res.json({success: false,err});
+          console.log(err);
+         res.status(200).json({ 
+              success: true,
+              userData: doc
+            });
+      });    
+});
 
 
 
