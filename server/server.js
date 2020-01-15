@@ -24,10 +24,27 @@ app.use(cookieParse());
 
 //   Models 
 const  {User} = require("./models/user");
+const  {Brand} = require("./models/brand");
 
 // Middleware
-const {auth} = require("./middleware/auth");
+const { auth } = require("./middleware/auth");
+const { admin} = require("./middleware/admin");
 
+//==============================
+// BRAND 
+//==============================
+
+app.post("/api/users/brand", auth,admin, (req, res)=> {
+    const brand = new Brand(req.body);
+
+    brand.save((err, doc)=> {
+        if(err) return res.status(400).json({success: false, err});
+        res.status(200).json({
+            success: true,
+            brand: doc
+        })
+    })
+});
 
 
 // ================================================
@@ -61,6 +78,9 @@ app.post("/api/users/register", (req, res)=>{
       });    
 });
 
+//====================================
+//    LOGON 
+//====================================
 
 app.post("/api/users/login", (req, res)=> {
  
@@ -83,6 +103,9 @@ app.post("/api/users/login", (req, res)=> {
 
 });
 
+//====================================
+//    LOGOUT 
+//====================================
 
 app.get("/api/user/logout", auth, (req, res)=> {
     User.findOneAndUpdate(
