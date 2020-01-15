@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParse = require("cookie-parser");
 
+const cors = require("cors");
+
+
 const mongoose = require("mongoose");
 const app = express();
 require("dotenv").config();
@@ -19,6 +22,7 @@ mongoose.connect(process.env.DATABASE, {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParse());
+app.use(cors());
 
 
 
@@ -53,7 +57,7 @@ app.get("/api/products/artical_by_id", (req, res)=> {
       });
     }
     // {$in} ==> useing for both single or array .
-    Product.find({'_id':{$in:items}})
+    Product.find({'_id':{$in:items}}).populate('brand').populate("wood")
     .exec((err, docs)=> {
        return res.status(200).send(docs);
     });
