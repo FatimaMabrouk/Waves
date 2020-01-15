@@ -46,6 +46,13 @@ app.post("/api/users/brand", auth,admin, (req, res)=> {
     })
 });
 
+app.get("/api/users/brands", auth, admin, (req, res)=>{
+    Brand.find({}, (err, brand)=> {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(brand);
+    })
+})
+
 
 // ================================================
 //      USER - Router
