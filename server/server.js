@@ -39,6 +39,27 @@ const { admin } = require("./middleware/admin");
 //    Products  
 //========================================
 
+/// fetching Product By ID
+
+app.get("/api/products/artical_by_id", (req, res)=> {
+    let type = req.query.type;
+    let items = req.query.id;
+    // typeof
+    if(type === "array") {
+      let ids =  req.query.id.split(',');
+      items = [];
+      items = ids.map(item=> {
+          return mongoose.Types.ObjectId(item);
+      });
+    }
+    // {$in} ==> useing for both single or array .
+    Product.find({'_id':{$in:items}})
+    .exec((err, docs)=> {
+       return res.status(200).send(docs);
+    });
+});
+
+
 app.post("/api/products/artical", auth, admin, (req, res)=>{
     const product = new Product(req.body);
     product.save((err, doc)=>{
@@ -46,17 +67,6 @@ app.post("/api/products/artical", auth, admin, (req, res)=>{
         res.status(200).json({success: true, artical: doc});
     })
 });
-
-// app.get("")
-
-
-
-
-
-
-
-
-
 
 
 //========================================
