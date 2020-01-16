@@ -3,7 +3,6 @@ export const validate = (element, formData = []) => {
   let error = [true,''];
   
    if(element.validation.email){
-    //    /\S+@\S+\.\S+/
     const vaild = /\S+@\S+\.\S+/.test(element.value);
     const message = `${!vaild ? 'Must be Valid' :''}` ;
     error = !vaild ? [vaild,message ] : error ;
@@ -14,7 +13,7 @@ export const validate = (element, formData = []) => {
       const message = `${!vaild ? 'This fiels is required' :''}` ;
       error = !vaild ? [vaild,message ] : error ;
   }
-     return  error 
+     return  error;
 }
 
 
@@ -23,9 +22,11 @@ export const validate = (element, formData = []) => {
     const newFormData = {
         ...formData
     }
+
     const newElemet = {
         ...newFormData[element.id]
     }
+
     newElemet.value = element.event.target.value;
 
     if(element.blur) {
@@ -37,4 +38,23 @@ export const validate = (element, formData = []) => {
     newFormData[element.id] = newElemet;
 
     return newFormData;
+ }
+
+ export const generateData = (formData, formName)=> {
+     let dataToSubmit = {};
+
+     for( let key in formData) {
+        dataToSubmit[key] = formData[key].value
+     }
+     return dataToSubmit;
+ }
+
+ export const isFormValid = (formData,formName ) => {
+   let formIsValid = true;
+
+   for( let key in formData) {
+       formIsValid = formData[key].valid && formIsValid;
+ }
+    return formIsValid;
+
  }
