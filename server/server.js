@@ -109,7 +109,7 @@ app.post("/api/users/brand", auth,admin, (req, res)=> {
         res.status(200).json({
             success: true,
             brand: doc
-        })
+        });
     })
 });
 
@@ -118,7 +118,7 @@ app.get("/api/users/brands", auth, admin, (req, res)=>{
         if(err) return res.status(400).send(err);
         res.status(200).send(brand);
     })
-})
+});
 
 
 // ================================================
