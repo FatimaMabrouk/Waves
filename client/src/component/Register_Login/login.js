@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormField from '../uitls/Form/FormField';
 import { connect } from 'react-redux';
+import { update }  from '../uitls/Form/formActions'
 
  class Login extends Component {
 
@@ -23,30 +24,36 @@ import { connect } from 'react-redux';
                 valid: false,
                 touched: false,
                 validationMassege:''
+            },
+            password: {
+                element:'input',
+                value: '',
+                config: {
+                    name: 'password_input',
+                    type: 'password',
+                    placeholder: 'Enter your password'
+                },
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false,
+                validationMassege:''
             }
-        },
-
-        password: {
-            element:'input',
-            value: '',
-            config: {
-                name: 'password_input',
-                type: 'password',
-                placeholder: 'Enter your password'
-            },
-            validation: {
-                required: true,
-            },
-            valid: false,
-            touched: false,
-            validationMassege:''
         }
     }
   
     updateForm = (element) => {
-       const newFormData = update(element, this.state.formdata,'login');
-    }     
-    onSubmitForm= () => {}  
+       const newFormData = update(element,this.state.formData,'login');
+       this.setState({
+           formError: false,
+           formData: newFormData
+       })
+    }    
+
+    onSubmitForm = () => {
+        
+    }  
 
     render() {
         return (
