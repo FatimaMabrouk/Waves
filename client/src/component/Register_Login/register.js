@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FormField from '../uitls/Form/FormField';
 import { loginUser } from '../../actions/user_actions';
 import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
+import { registerUser } from '../../actions/user_actions';
 
 
  class Register extends Component {
@@ -81,7 +82,7 @@ import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
                 },
                 validation: {
                     required: true,
-                    confirnm:'password'
+                    confirm:'password'
                 },
                 valid: false,
                 touched: false,
@@ -106,7 +107,7 @@ import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
              
     
             if(formIsValid) {
-                console.log()
+                console.log(dataToSubmit)
                 // this.props.dispatch(loginUser(dataToSubmit)).then( response => {
                 //     if(response.payload.loginSuccess) {
                 //      console.log(response.payload);

@@ -8,6 +8,13 @@ export const validate = (element, formData = []) => {
     error = !vaild ? [vaild,message ] : error ;
    }
 
+   if(element.validation.confirm) {
+    const vaild = element.value.trim() ===  formData[element.validation.confirm].value;
+    const message = `${!vaild ? 'Password do not Match' :''}` ;
+    error = !vaild ? [vaild,message ] : error ;
+   }
+
+
   if(element.validation.required) {
       const vaild = element.value.trim() !== '';
       const message = `${!vaild ? 'This fiels is required' :''}` ;
@@ -44,7 +51,10 @@ export const validate = (element, formData = []) => {
      let dataToSubmit = {};
 
      for( let key in formData) {
-        dataToSubmit[key] = formData[key].value;
+         if(key !== 'confirmPassword'){
+             dataToSubmit[key] = formData[key].value;
+         }
+        
      }
      return dataToSubmit;
  }
