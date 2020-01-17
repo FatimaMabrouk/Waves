@@ -4,12 +4,13 @@ import FormField from '../uitls/Form/FormField';
 import { loginUser } from '../../actions/user_actions';
 import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
 import { registerUser } from '../../actions/user_actions';
+import Dialog from '@material-ui/core/Dialog';
 
 
  class Register extends Component {
     state = {
         formError: false,
-        formSuccess:'',
+        formSuccess:false,
         formData: {
             name: {
                 element:'input',
@@ -108,16 +109,22 @@ import { registerUser } from '../../actions/user_actions';
     
             if(formIsValid) {
                 console.log(dataToSubmit)
-                // this.props.dispatch(loginUser(dataToSubmit)).then( response => {
-                //     if(response.payload.loginSuccess) {
-                //      console.log(response.payload);
-                //     //  this.props.history.push('/user/dashboard')
-                //     }else {
-                //         this.setState({
-                //             formError: true
-                //         })
-                //     }
-                // });
+                 this.props.dispatch(registerUser(dataToSubmit))
+                 .then(response => {
+                   if(response.payload.success) {
+                       this.setState({
+                           formError: false,
+                           formSuccess: true
+                       });
+                       setTimeout(()=>{
+                         this.props.history.push('./register_login');
+                       }, 3000);
+                   } else {
+                       this.setState({ formError: true});
+                   }
+                 }).catch(e => {
+                     this.setState({ formError: true});
+                 })
     
             } else {
                 this.setState({
@@ -197,6 +204,16 @@ import { registerUser } from '../../actions/user_actions';
                     </div>
 
                 </div>
+                <Dialog open={this.state.formSuccess}>
+                    <div className="dialog_alert">
+                        <div>Congratulation !!</div>
+                        <div>
+                            you will be redirect to Login in few seconde ...
+                        </div>
+
+                    </div>
+
+                </Dialog>
                 
             </div>
         )
