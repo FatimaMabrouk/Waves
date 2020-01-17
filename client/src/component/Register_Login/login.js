@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import FormField from '../uitls/Form/FormField';
 import { connect } from 'react-redux';
 import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
+import { loginUser } from '../../actions/user_actions';
+import { withRouter} from 'react-router-dom';
+// import { response } from 'express';
 
  class Login extends Component {
 
@@ -55,9 +58,20 @@ import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
         event.preventDefault();
         let dataToSubmit = generateData(this.state.formData,'login');
         let formIsValid = isFormValid(this.state.formData, 'login');
+         
 
         if(formIsValid) {
-            console.log(dataToSubmit);
+            this.props.dispatch(loginUser(dataToSubmit)).then( response => {
+                if(response.payload.loginSuccess) {
+                 console.log(response.payload);
+                //  this.props.history.push('/user/dashboard')
+                }else {
+                    this.setState({
+                        formError: true
+                    })
+                }
+            });
+
         } else {
             this.setState({
                formError: true 
@@ -95,4 +109,4 @@ import { update , generateData , isFormValid}  from '../uitls/Form/formActions'
     }
 }
 
-export default  connect()(Login);
+export default  connect()(withRouter(Login));

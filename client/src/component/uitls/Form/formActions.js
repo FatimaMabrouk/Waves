@@ -31,7 +31,7 @@ export const validate = (element, formData = []) => {
 
     if(element.blur) {
         let validData =  validate(newElemet, formData);
-        newElemet.vaild = validData[0];
+        newElemet.valid = validData[0];
         newElemet.validationMassege = validData[1];
     }
     newElemet.touched = element.blur;
@@ -44,15 +44,17 @@ export const validate = (element, formData = []) => {
      let dataToSubmit = {};
 
      for( let key in formData) {
-        dataToSubmit[key] = formData[key].value
+        dataToSubmit[key] = formData[key].value;
      }
      return dataToSubmit;
  }
 
+
+
  export const isFormValid = (formData,formName ) => {
    let formIsValid = true;
 
-   for( let key in formData) {
+   for(let key in formData) {
        formIsValid = formData[key].valid && formIsValid;
  }
     return formIsValid;
