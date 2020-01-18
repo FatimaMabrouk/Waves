@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { USER_SERVER } from '../component/uitls/misc'
-import Login from '../component/Register_Login/login';
+// import Login from '../component/Register_Login/login';
 import { LOGIN_USER , REGISTER_USER, AUTH_USER, LOGOUT_USER } from './type';
 
 
@@ -36,6 +35,7 @@ export function auth(dataToSubmit){
     }     
 
 }
+
 
 
 export function logoutUser(){
