@@ -20,11 +20,8 @@ const MyButton = (props) => {
            default:
                template='';
        }
-
-     
       return template;
    } 
-
     return (
       <div className="my_link">
           {buttons()}

@@ -32,6 +32,7 @@ const  { Brand } = require("./models/brand");
 const  { Wood  } = require("./models/wood");
 const  { Product } = require("./models/product");
 
+
 // Middleware
 const { auth  } = require("./middleware/auth");
 const { admin } = require("./middleware/admin");
@@ -74,7 +75,7 @@ app.post("/api/products/artical", auth, admin, (req, res)=>{
 
 
 //========================================
-//    Wood  
+//              Wood  
 //========================================
 
 app.post("/api/product/wood", auth, admin, (req, res)=> {
@@ -95,10 +96,8 @@ app.get("/api/product/woods", (req, res)=>{
 
 
 
-
-
 //==============================
-// BRAND 
+//           BRAND 
 //==============================
 
 app.post("/api/users/brand", auth,admin, (req, res)=> {
@@ -122,12 +121,12 @@ app.get("/api/users/brands", auth, admin, (req, res)=>{
 
 
 // ================================================
-//      USER - Router
+//          USER - Router
 // ================================================
 
 app.get("/api/users/auth", auth, (req, res)=> {
    res.status(200).json({
-       isAdmin : req.user.role ===0 ? false : true,
+       isAdmin : req.user.role === 0 ? false : true,
        isAuth: true,
        email : req.user.email,
        name: req.user.name,
@@ -135,7 +134,7 @@ app.get("/api/users/auth", auth, (req, res)=> {
        role: req.user.role,
        cart: req.user.cart,
        history: req.user.history
-   });
+   }); 
 })
 
 
