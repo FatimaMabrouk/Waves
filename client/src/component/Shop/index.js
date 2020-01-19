@@ -7,9 +7,9 @@ import {  getProductesToShope,  getBrands, getWoods } from '../../actions/produc
 
 import { connect } from 'react-redux';
 
-
- import CollapseCheckbox from '../uitls/CollapseCheckbox';
- import CollapseRadio from '../uitls/CollapseRadio';
+import LoadmoreCards from './loadmoreCards';
+import CollapseCheckbox from '../uitls/CollapseCheckbox';
+import CollapseRadio from '../uitls/CollapseRadio';
 
 class Shop extends Component {
 
@@ -114,6 +114,12 @@ class Shop extends Component {
                            
                         </div>
                         <div className="right">
+                            <div className="shop_options">
+                                <div className="shope_grids clear">
+                                    grids
+                                </div>
+
+                            </div>
                             right
                         </div>
                     </div>
