@@ -1,6 +1,24 @@
 import React from 'react';
+import Card from './Form/card';
 
 const CardBlock = (props) => {
+ 
+
+   const renderCards = () => (
+       props.list ?
+       props.list.map((card, i) =>(
+           
+               <Card 
+                key={i}
+                {...card}
+              />
+           
+           
+       ))
+       : null 
+   )
+
+
     return (
         <div className="card_block">
            <div className="container">
