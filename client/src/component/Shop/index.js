@@ -115,17 +115,21 @@ class Shop extends Component {
                         </div>
                         <div className="right">
                             <div className="shop_options">
-                                <div className="shope_grids clear">
+                                <div className="shop_grids clear">
                                     grids
                                 </div>
 
                             </div>
-                            <LoadmoreCards
-                             grid={this.state.grid}
-                             limit={this.state.limit}
-                             size={products.toShop}
-                             loadMore={ ()=> console.log('load more') }
+                            <div>
+                                <LoadmoreCards
+                                    grid={this.state.grid}
+                                    limit={this.state.limit}
+                                    size={products.toshopeSize} 
+                                    products={products.toShop}
+                                    loadMore={ ()=> console.log('load more') }
                             />
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
