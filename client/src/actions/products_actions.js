@@ -6,7 +6,7 @@ import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL , GET_BRANDS,
 import { PRODUCT_SERVER } from '../component/uitls/misc';
 
 
-export function getProductesToShope(skip, limit,  filters = []) {
+export function getProductesToShope(skip, limit,  filters = [], previousState = []) {
     const data = {
         skip,
         limit,
@@ -14,6 +14,10 @@ export function getProductesToShope(skip, limit,  filters = []) {
     }
     const requset = axios.post(`${PRODUCT_SERVER}/shop`, data).
                     then( response =>  { 
+                        let newState = [
+                            ...previousState,
+                            ...response.data.articles
+                        ]
                         return {
                              size : response.data.size,
                              articles: response.data.articles

@@ -10,7 +10,7 @@ import CardBlockShop from '../uitls/card_block_shop';
                 list={props.products}
             />
         </div>
-        {/* {
+        {
             props.size > 0 && props.size >= props.limit ?
                 <div className="load_more_container">
                     <span onClick={()=> props.loadMore()}>
@@ -18,7 +18,7 @@ import CardBlockShop from '../uitls/card_block_shop';
                     </span>
                 </div>
             :null
-        } */}
+        }
         
 
 
