@@ -17,7 +17,7 @@ export default function(state= {}, action) {
       case GET_PRODUCTS_TO_SHOP :
          return { 
                ...state,
-               toShopshope:GET_PRODUCTS_TO_SHOP,
+               toShop : action.payload.articles,
                toshopeSize : action.payload.size
             
             }      

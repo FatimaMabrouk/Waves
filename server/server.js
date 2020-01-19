@@ -61,9 +61,22 @@ app.post('/api/product/shop', (req, res) => {
                     findArgs[key] = req.body.filters[key]
                 }
             }
-    }
-     console.log(findArgs);
-     res.status(200);
+}
+Product. 
+find(findArgs).
+populate('brand').
+populate('wood').
+sort([[sortBy, order]]).
+skip(skip). 
+limit(limit).
+exec( (err, articles)=> {
+ if(err) return res.status(400).send(err);
+ res.status(200).json({
+     size: articles.length,
+     articles
+ })
+})
+     
 });
 
 
