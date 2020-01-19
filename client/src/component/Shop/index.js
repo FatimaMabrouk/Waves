@@ -120,7 +120,12 @@ class Shop extends Component {
                                 </div>
 
                             </div>
-                            right
+                            <LoadmoreCards
+                             grid={this.state.grid}
+                             limit={this.state.limit}
+                             size={products.toShop}
+                             loadMore={ ()=> console.log('load more') }
+                            />
                         </div>
                     </div>
                 </div>
