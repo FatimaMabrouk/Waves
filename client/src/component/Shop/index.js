@@ -28,7 +28,14 @@ class Shop extends Component {
     componentDidMount(){
         this.props.dispatch(getBrands());
         this.props.dispatch(getWoods());
+
+        this.props.dispatch(getProductesToShope(
+            this.state.skip,
+            this.state.limit,
+            this.state.filters
+        ))
     }
+
 
     handlePrice = (value) => {
         const data = price;

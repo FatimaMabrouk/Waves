@@ -6,22 +6,24 @@ import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL , GET_BRANDS,
 import { PRODUCT_SERVER } from '../component/uitls/misc';
 
 
-
-
-
-
-export function getProductesToShope() {
-    
-
-    const request = axios.get('http://localhost:3002/api/products/shop').
-                    then( response =>  response.data);
-                
+export function getProductesToShope(skip, limit,  filters = []) {
+    const data = {
+        skip,
+        limit,
+        filters
+    }
+    const requset = axios.post(`${PRODUCT_SERVER}/shop`, data).
+                    then( response =>  { 
+                        return {
+                             size : response.data.size,
+                             articles: response.data.articles
+                    } 
+                    });
         return {
             type: GET_PRODUCTS_TO_SHOP,
             payload: requset
         }            
-    
-                }
+ }
 
 
                 
