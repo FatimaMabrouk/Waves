@@ -5,6 +5,10 @@ import { frets,price } from '../uitls/Form/fixed_categories';
 
 import {  getProductesToShope,  getBrands, getWoods } from '../../actions/products_actions';
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faBars from '@fortawesome/fontawesome-free-solid/faBars';
+import faTh from '@fortawesome/fontawesome-free-solid/faTh';
+
 import { connect } from 'react-redux';
 
 import LoadmoreCards from './loadmoreCards';
@@ -91,6 +95,13 @@ class Shop extends Component {
         })
     }
 
+
+    handleGrid = () => {
+        this.setState({
+            grid: !this.state.grid ? 'grid_bars': ''
+        })
+    }
+
     render() {
         console.log(this.state.filters)
         const products = this.props.products;
@@ -131,10 +142,16 @@ class Shop extends Component {
                         <div className="right">
                             <div className="shop_options">
                                 <div className="shop_grids clear">
-                                    <div className={`grid_btn ${!this.state.grid? '': 'active'}`}
+                                    <div className={`grid_btn ${this.state.grid? '': 'active'}`}
                                     onClick={()=>this.handleGrid()}
                                     >
                                         <FontAwesomeIcon icon={faTh}/>
+                                    </div>
+
+                                    <div className={`grid_btn ${!this.state.grid? '': 'active'}`}
+                                    onClick={()=>this.handleGrid()}
+                                    >
+                                        <FontAwesomeIcon icon={faBars}/>
                                     </div>
                                 </div>
 
