@@ -3,7 +3,7 @@ import PageTop from '../uitls/page_top';
 
 import { frets,price } from '../uitls/Form/fixed_categories';
 
-import { getBrands, getWoods } from '../../actions/products_actions';
+import {  getProductesToShope,  getBrands, getWoods } from '../../actions/products_actions';
 
 import { connect } from 'react-redux';
 

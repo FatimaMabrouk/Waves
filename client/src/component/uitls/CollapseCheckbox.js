@@ -72,7 +72,7 @@ class CollapseCheckbox extends Component {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
         
-        console.log(newChecked);
+        // console.log(newChecked);
         if(currentIndex === -1){
             newChecked.push(value)
         } else{

@@ -1,11 +1,30 @@
 import axios from 'axios';
 import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL , GET_BRANDS,
-    GET_WOODS } from './type';
+    GET_WOODS  , GET_PRODUCTS_TO_SHOP } from './type';
 
 
 import { PRODUCT_SERVER } from '../component/uitls/misc';
 
 
+
+
+
+
+export function getProductesToShope() {
+    
+
+    const request = axios.get('http://localhost:3002/api/products/shop').
+                    then( response =>  response.data);
+                
+        return {
+            type: GET_PRODUCTS_TO_SHOP,
+            payload: requset
+        }            
+    
+                }
+
+
+                
 export function getProductsBySell(){
             //?sortBy=sold&order=desc&limit=100
     //articles?sortBy=sold&order=desc&limit=100
@@ -63,3 +82,6 @@ export function getWoods(){
         payload: request
     }
 }
+
+
+
