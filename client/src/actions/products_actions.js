@@ -20,7 +20,7 @@ export function getProductesToShope(skip, limit,  filters = [], previousState = 
                         ]
                         return {
                              size : response.data.size,
-                             articles: response.data.articles
+                             articles: newState
                     } 
                     });
         return {
