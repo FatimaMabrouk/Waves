@@ -3,7 +3,7 @@ import Header from '../component/Header_Footer/Header'
 import Footer from '../component/Header_Footer/Footer'
 
 
-export default class Layout extends Component {
+class Layout extends Component {
     render() {
         return (
             <div>
@@ -17,4 +17,5 @@ export default class Layout extends Component {
         )
     }
 }
+export default Layout
 
