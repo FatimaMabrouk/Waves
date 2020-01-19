@@ -11,16 +11,18 @@ import { GET_PRODUCT_BY_SELL ,
 
 import { PRODUCT_SERVER } from '../component/uitls/misc';
 
+export function getProductDetail(id){
 
-export function getProductDetail(id) {
-    const request = axios.get(`${PRODUCT_SERVER}/artical_by_id?id=${id}&type=single`)
-                    .then(response=>{
-                        return response.data[0];
-                    })
-           return {
-               type: GET_PRODUCTS_DETAIL,
-               payload: request
-           }         
+    const request = axios.get(`/api/products/artical_by_id?id=${id}&type=single`)
+    .then(response=>{
+        return response.data[0]
+    });
+     
+    return {
+        type: GET_PRODUCTS_DETAIL,
+        payload: request
+    }
+
 }
 
 export function clearProductDetail() {
