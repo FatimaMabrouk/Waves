@@ -131,7 +131,11 @@ class Shop extends Component {
                         <div className="right">
                             <div className="shop_options">
                                 <div className="shop_grids clear">
-                                    grids
+                                    <div className={`grid_btn ${!this.state.grid? '': 'active'}`}
+                                    onClick={()=>this.handleGrid()}
+                                    >
+                                        <FontAwesomeIcon icon={faTh}/>
+                                    </div>
                                 </div>
 
                             </div>
