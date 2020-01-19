@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
+import {getProductDetail , clearProductDetail } from '../../actions/products_actions'
 
 class ProductPage extends Component {
 
@@ -17,7 +18,7 @@ class ProductPage extends Component {
     }
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
     return {
         products : state.products
     }

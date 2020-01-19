@@ -12,3 +12,6 @@ export const GET_BRANDS = 'get_brands';
 export const GET_WOODS =  'get_woods';
 
 export const GET_PRODUCTS_TO_SHOP = 'get_products_to_shop';
+
+export const GET_PRODUCTS_DETAIL = 'get_product_detailes';
+export const CLEAR_PRODUCTS_DETAIL = 'clear_product_detailes';

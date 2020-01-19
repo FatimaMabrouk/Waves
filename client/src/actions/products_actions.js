@@ -1,9 +1,35 @@
 import axios from 'axios';
-import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL , GET_BRANDS,
-    GET_WOODS  , GET_PRODUCTS_TO_SHOP } from './type';
+import { GET_PRODUCT_BY_SELL ,
+         GET_PRODUCT_BY_ARRIVAL ,
+         GET_BRANDS,
+         GET_WOODS,
+         GET_PRODUCTS_TO_SHOP,
+         GET_PRODUCTS_DETAIL,
+         CLEAR_PRODUCTS_DETAIL
+   } from './type';
 
 
 import { PRODUCT_SERVER } from '../component/uitls/misc';
+
+
+export function getProductDetail(id) {
+    const request = axios.get(`${PRODUCT_SERVER}/artical_by_id?id=${id}&type=single`)
+                    .then(response=>{
+                        return response.data[0];
+                    })
+           return {
+               type: GET_PRODUCTS_DETAIL,
+               payload: request
+           }         
+}
+
+export function clearProductDetail() {
+    return {
+        type: CLEAR_PRODUCTS_DETAIL,
+        payload: ''
+    }
+    
+}
 
 
 export function getProductesToShope(skip, limit,  filters = [], previousState = []) {

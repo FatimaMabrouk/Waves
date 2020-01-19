@@ -1,5 +1,11 @@
-import { GET_PRODUCT_BY_ARRIVAL, GET_PRODUCT_BY_SELL , GET_BRANDS,
-   GET_WOODS , GET_PRODUCTS_TO_SHOP} from '../actions/type';
+import { GET_PRODUCT_BY_ARRIVAL,
+         GET_PRODUCT_BY_SELL ,
+         GET_BRANDS,
+         GET_WOODS ,
+         GET_PRODUCTS_TO_SHOP , 
+         GET_PRODUCTS_DETAIL, 
+         CLEAR_PRODUCTS_DETAIL  
+      } from '../actions/type';
 
 export default function(state= {}, action) {
     switch(action.type) {
@@ -20,8 +26,11 @@ export default function(state= {}, action) {
                toShop : action.payload.articles,
                toshopeSize : action.payload.size
             
-            }      
-
+            }     
+      case GET_PRODUCTS_DETAIL:
+         return { ...state, productDetail : action.payload }       
+      case CLEAR_PRODUCTS_DETAIL :
+         return { ...state, productDetail : action.payload }
         default: 
             return state;
         
