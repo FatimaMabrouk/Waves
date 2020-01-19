@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
+    renderCardImage(images){
+        if(images.length > 0){
+            return images[0].url
+        } else {
+            return '/images/image_not_availble.png'
+        }
+    }
     render() {
         const props = this.props;
                 
@@ -9,7 +16,7 @@ class Card extends Component {
                <div 
                className="image"
                style={{
-                //    background:`url(${this.renderCardImage(props.images)}) no-repeat`
+                  background:`url(${this.renderCardImage(props.images)}) no-repeat`
                }}
                
                >
@@ -20,7 +27,12 @@ class Card extends Component {
                            <div className="name">{props.price}</div>
                        </div>
                    </div>
-
+                   {props.grid ?
+                    <div className="descriptions">
+                        testing anything
+                    </div>   
+                      : null
+                }
                </div>
             </div>
         )

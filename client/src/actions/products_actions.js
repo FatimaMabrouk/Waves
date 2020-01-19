@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL  } from './type';
+import { GET_PRODUCT_BY_SELL , GET_PRODUCT_BY_ARRIVAL , GET_BRANDS,
+    GET_WOODS } from './type';
+
+
+import { PRODUCT_SERVER } from '../component/uitls/misc';
 
 
 export function getProductsBySell(){
@@ -28,4 +32,34 @@ export function getProductByArrival(){
          payload: request
       }
   
+}
+
+
+
+
+
+////////////////////////////////////
+//////        CATEGORIES
+////////////////////////////////////
+
+export function getBrands(){
+    // 'http://localhost:3002/api
+    const request = axios.get(`${PRODUCT_SERVER}/brands`)
+                .then(response => response.data );
+
+    return {
+        type: GET_BRANDS,
+        payload: request
+    }
+
+}
+
+export function getWoods(){
+    const request = axios.get(`${PRODUCT_SERVER}/woods`)
+    .then(response => response.data );
+
+    return {
+        type: GET_WOODS,
+        payload: request
+    }
 }
