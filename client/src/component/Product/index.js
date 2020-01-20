@@ -34,7 +34,10 @@ class ProductPage extends Component {
                            images
                        </div>
                        <div className="right">
-                           
+                           <ProdNfo 
+                             addToCart={(id)=>this.addToCartHandler(id) }
+                           detail={this.props.products.productDetail}
+                          />
                        </div>
 
                    </div>
