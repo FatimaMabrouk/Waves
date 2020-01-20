@@ -3,7 +3,7 @@ import {connect } from 'react-redux';
 import {getProductDetail , clearProductDetail } from '../../actions/products_actions'
 import PageTop from '../uitls/page_top';
 import ProdNfo from './productINFO';
-import ProdImg from './prodImg';
+import ProdImg from './productImg';
 // ProductPage
 class ProductPage extends Component {
 
@@ -31,9 +31,12 @@ class ProductPage extends Component {
                 {
                     this.props.products.productDetail ?
                    <div className="product_detail_wrapper">
-                       <div className="left">
-                           images
-                       </div>
+                        <div className="left">
+                            <div style={{width:'500px'}}>
+                                <ProdImg
+                                    detail={this.props.products.prodDetail}
+                                />
+                            </div> </div>
                        <div className="right">
                            <ProdNfo 
                              addToCart={(id)=>this.addToCartHandler(id) }
