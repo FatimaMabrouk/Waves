@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import {getProductDetail , clearProductDetail } from '../../actions/products_actions'
 import PageTop from '../uitls/page_top';
+import ProdNfo from './productINFO';
 // ProductPage
 class ProductPage extends Component {
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        this.props.dispatch(getProductDetail(id)).then(response=>{
-            if(!this.props.products.prodDetail){
-                this.props.history.push('/');
-            }
-        })
+        this.props.dispatch(getProductDetail(id))
+        //  .then(response=>{
+        //     if(!this.props.products.prodDetail){
+        //         this.props.history.push('/');
+        //     }
+        // })
     }
 
     componentWillUnmount(){
@@ -27,15 +29,19 @@ class ProductPage extends Component {
                 <div className="container">
                 {
                     this.props.products.productDetail ?
-                    <div className="product_detail_wrapper">
-                        <div className="left">
-                            <div style={{width:'500px'}}>
-                               
-                            </div>
-                        </div>
-                      
-                    </div>
-                    : 'Loading' 
+                   <div className="product_detail_wrapper">
+                       <div className="left">
+                           images
+                       </div>
+                       <div className="right">
+                           
+                       </div>
+
+                   </div>
+          
+
+
+                    : 'Loading'
                 } 
 
                 </div>                
