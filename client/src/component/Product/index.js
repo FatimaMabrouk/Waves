@@ -3,6 +3,7 @@ import {connect } from 'react-redux';
 import {getProductDetail , clearProductDetail } from '../../actions/products_actions'
 import PageTop from '../uitls/page_top';
 import ProdNfo from './productINFO';
+import ProdImg from './prodImg';
 // ProductPage
 class ProductPage extends Component {
 
